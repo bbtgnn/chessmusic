@@ -30,7 +30,8 @@ game = chess.pgn.read_game(pgn)
 track = 0
 channel = 0
 time = 0  # In beats
-tempo = 1200  # In BPM
+length = 1
+tempo = 60  # In BPM
 volume = 100  # 0-127, as per the MIDI standard
 
 MyMIDI = MIDIFile(1)  # One track, defaults to format 1
@@ -41,16 +42,12 @@ MyMIDI.addTempo(track, time, tempo)
 
 for node in game.mainline():
 
-    score = node.eval().relative.score(mate_score=10000)
     square = chess.SQUARE_NAMES[node.move.to_square]
 
     note = midict[square]
-    length = abs(score)
 
-    print(note, length)
-    if length != 0:
-        MyMIDI.addNote(track, channel, note, time, length, volume)
-        time += length
+    MyMIDI.addNote(track, channel, note, time, length, volume)
+    time += length
 
 
 # -- WRITING MIDI -- #
