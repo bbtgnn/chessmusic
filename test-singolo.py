@@ -19,7 +19,7 @@ with open(tablepath) as csvfile:
 
 # -- LOADING PGN -- #
 
-filepath = "/Users/bbtgnn/Documents/GitHub/chessmusic/tracce/karpov-kasparov-1985/karpov_kasparov_1985.pgn"
+filepath = "/Users/bbtgnn/Documents/GitHub/chessmusic/test.pgn"
 
 pgn = open(filepath)
 game = chess.pgn.read_game(pgn)
